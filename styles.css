@@ -1,0 +1,316 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--header-background-color);
+  color: var(--header-text-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-btn, .theme-btn {
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 250px;
+  background-color: var(--menu-background-color);
+  color: var(--menu-text-color);
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.menu.open {
+  max-height: 300px;
+}
+
+.menu ul {
+  list-style: none;
+}
+
+.menu ul li {
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--menu-divider-color);
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.nav-buttons button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-buttons button:hover {
+  background-color: var(--button-hover-color);
+}
+
+main {
+  padding: 20px;
+  text-align: center;
+}
+
+textarea {
+  width: 90%;
+  height: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--textarea-border-color);
+  border-radius: 5px;
+  background-color: var(--textarea-background-color);
+  color: var(--textarea-text-color);
+}
+
+button {
+  cursor: pointer;
+}
+
+#output {
+  margin: 20px auto;
+  padding: 10px;
+  width: 90%;
+  border: 1px solid var(--textarea-border-color);
+  border-radius: 5px;
+  background-color: var(--output-background-color);
+  color: var(--output-text-color);
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+/* Lessons Section Styling */
+.lesson-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--card-background-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lesson {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: var(--lesson-background-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lesson h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--header-text-color);
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: var(--button-hover-color);
+}
+
+.tab-button:hover {
+  background-color: var(--button-hover-color);
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+  background-color: var(--card-background-color);
+  border-radius: 10px;
+  border: 1px solid var(--textarea-border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+.tab-content p {
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+
+.tab-content ul {
+  list-style: disc;
+  margin: 10px 0 10px 20px;
+}
+
+.tab-content ul li {
+  margin-bottom: 10px;
+}
+
+.tab-content pre {
+  padding: 10px;
+  background-color: var(--textarea-background-color);
+  border: 1px solid var(--textarea-border-color);
+  border-radius: 5px;
+  color: var(--textarea-text-color);
+  white-space: pre-wrap;
+}
+
+.tab-content.hidden {
+  display: none;
+}
+
+.tab-content.active {
+  display: block !important;
+}
+
+.hidden {
+  display: none;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: var(--textarea-background-color);
+  color: var(--textarea-text-color);
+  border: 1px solid var(--textarea-border-color);
+  border-radius: 5px;
+  resize: none;
+}
+
+.run-code {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.run-code:hover {
+  background-color: var(--button-hover-color);
+}
+
+pre#challenge1-output,
+pre#challenge2-output {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: var(--output-background-color);
+  color: var(--output-text-color);
+  border: 1px solid var(--textarea-border-color);
+  border-radius: 5px;
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .lesson-container {
+    padding: 15px;
+  }
+
+  .lesson {
+    padding: 15px;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* Card and Background Colors */
+:root {
+  --lesson-background-color: #1e1e2f;
+  --card-background-color: #28293d;
+}
+
+
+/* Themes */
+:root {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --header-background-color: #1c1c1c;
+  --header-text-color: #ffffff;
+  --menu-background-color: #242424;
+  --menu-text-color: #ffffff;
+  --menu-divider-color: #444444;
+  --button-background-color: #6a64f1;
+  --button-hover-color: #534bc1;
+  --button-text-color: #ffffff;
+  --textarea-background-color: #242424;
+  --textarea-text-color: #ffffff;
+  --textarea-border-color: #444444;
+  --output-background-color: #1e1e1e;
+  --output-text-color: #ffffff;
+}
+
+body.light-mode {
+  --background-color: #f9f9f9;
+  --text-color: #121212;
+  --header-background-color: #ffffff;
+  --header-text-color: #121212;
+  --menu-background-color: #ffffff;
+  --menu-text-color: #121212;
+  --menu-divider-color: #dddddd;
+  --button-background-color: #007bff;
+  --button-hover-color: #0056b3;
+  --button-text-color: #ffffff;
+  --textarea-background-color: #ffffff;
+  --textarea-text-color: #121212;
+  --textarea-border-color: #cccccc;
+  --output-background-color: #f1f1f1;
+  --output-text-color: #121212;
+}
