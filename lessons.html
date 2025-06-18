@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScriptLab - Lessons</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <button id="menu-toggle" class="menu-btn">☰</button>
+    <nav id="menu" class="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="lessons.html">Lessons</a></li>
+        <li><a href="playground.html">Code Playground</a></li>
+        <li><a href="progress.html">Progress</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" class="theme-btn">🌙</button>
+  </header>
+  <main>
+    <h1>JavaScript Lessons</h1>
+    <div class="lesson-container">
+      <!-- Lesson 1 -->
+      <div class="lesson">
+        <h2>Lesson 1: Introduction to the DOM</h2>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="lesson1-theory">Theory</button>
+          <button class="tab-button" data-tab="lesson1-challenge">Challenge</button>
+      </div>
+        <div class="tab-content active" id="lesson1-theory">
+          <p>The DOM (Document Object Model) represents the structure of a web page as a tree of objects. It allows JavaScript to dynamically manipulate elements, styles, and attributes.</p>
+          <ul>
+            <li>The DOM is structured as a tree of nodes.</li>
+            <li>You can use methods like <code>document.getElementById()</code> to select elements.</li>
+            <li>Events allow you to respond to user interactions with the page.</li>
+          </ul>
+        </div>
+        <div class="tab-content hidden" id="lesson1-challenge">
+          <p>Write code to change the text of a paragraph with the ID <code>demo</code> to "Hello, DOM!"</p>
+          <textarea id="challenge1-code"></textarea>
+          <button class="run-code" onclick="runChallenge1()">Run Code</button>
+          <pre id="challenge1-output"></pre>
+        </div>
+      </div>
+
+      <!-- Lesson 2 -->
+      <div class="lesson">
+        <h2>Lesson 2: Event Listeners</h2>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="lesson2-theory">Theory</button>
+          <button class="tab-button" data-tab="lesson2-challenge">Challenge</button>
+        </div>
+        <div class="tab-content active" id="lesson2-theory">
+          <p>Event listeners are used to run JavaScript code in response to user interactions like clicks, key presses, or mouse movements.</p>
+          <ul>
+            <li>Use <code>element.addEventListener('event', callback)</code> to attach a listener.</li>
+            <li>Common events include <code>click</code>, <code>mouseover</code>, and <code>keydown</code>.</li>
+            <li>You can use anonymous or named functions as callbacks.</li>
+          </ul>
+        </div>
+        <div class="tab-content hidden" id="lesson2-challenge">
+          <p>Create a button with the text "Click Me!" and display an alert saying "Button Clicked!" when the button is clicked.</p>
+          <textarea id="challenge2-code"></textarea>
+          <button class="run-code" onclick="runChallenge2()">Run Code</button>
+          <pre id="challenge2-output"></pre>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
