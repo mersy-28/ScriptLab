@@ -1,74 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ScriptLab - Lessons</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <header>
+  <header class="navbar">
+    <div class="logo">ScriptLab</div>
     <button id="menu-toggle" class="menu-btn">☰</button>
     <nav id="menu" class="menu">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="lessons.html">Lessons</a></li>
-        <li><a href="playground.html">Code Playground</a></li>
+        <li><a href="playground.html">Playground</a></li>
         <li><a href="progress.html">Progress</a></li>
       </ul>
     </nav>
     <button id="theme-toggle" class="theme-btn">🌙</button>
   </header>
-  <main>
-    <h1>JavaScript Lessons</h1>
-    <div class="lesson-container">
-      <!-- Lesson 1 -->
-      <div class="lesson">
-        <h2>Lesson 1: Introduction to the DOM</h2>
-        <div class="tabs">
-          <button class="tab-button active" data-tab="lesson1-theory">Theory</button>
-          <button class="tab-button" data-tab="lesson1-challenge">Challenge</button>
-      </div>
-        <div class="tab-content active" id="lesson1-theory">
-          <p>The DOM (Document Object Model) represents the structure of a web page as a tree of objects. It allows JavaScript to dynamically manipulate elements, styles, and attributes.</p>
-          <ul>
-            <li>The DOM is structured as a tree of nodes.</li>
-            <li>You can use methods like <code>document.getElementById()</code> to select elements.</li>
-            <li>Events allow you to respond to user interactions with the page.</li>
-          </ul>
-        </div>
-        <div class="tab-content hidden" id="lesson1-challenge">
-          <p>Write code to change the text of a paragraph with the ID <code>demo</code> to "Hello, DOM!"</p>
-          <textarea id="challenge1-code"></textarea>
-          <button class="run-code" onclick="runChallenge1()">Run Code</button>
-          <pre id="challenge1-output"></pre>
-        </div>
-      </div>
 
-      <!-- Lesson 2 -->
-      <div class="lesson">
-        <h2>Lesson 2: Event Listeners</h2>
-        <div class="tabs">
-          <button class="tab-button active" data-tab="lesson2-theory">Theory</button>
-          <button class="tab-button" data-tab="lesson2-challenge">Challenge</button>
-        </div>
-        <div class="tab-content active" id="lesson2-theory">
-          <p>Event listeners are used to run JavaScript code in response to user interactions like clicks, key presses, or mouse movements.</p>
-          <ul>
-            <li>Use <code>element.addEventListener('event', callback)</code> to attach a listener.</li>
-            <li>Common events include <code>click</code>, <code>mouseover</code>, and <code>keydown</code>.</li>
-            <li>You can use anonymous or named functions as callbacks.</li>
-          </ul>
-        </div>
-        <div class="tab-content hidden" id="lesson2-challenge">
-          <p>Create a button with the text "Click Me!" and display an alert saying "Button Clicked!" when the button is clicked.</p>
-          <textarea id="challenge2-code"></textarea>
-          <button class="run-code" onclick="runChallenge2()">Run Code</button>
-          <pre id="challenge2-output"></pre>
-        </div>
+  <main class="lesson-container">
+    <h1>JavaScript Lessons</h1>
+
+    <!-- Lesson 1 -->
+    <div class="lesson">
+      <h2>Lesson 1: Introduction to the DOM</h2>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="lesson1-theory">Theory</button>
+        <button class="tab-button" data-tab="lesson1-challenge">Challenge</button>
+      </div>
+      <div class="tab-content active" id="lesson1-theory">
+        <p>The <strong>DOM</strong> is a programming interface for web documents. It represents the page structure as a tree of nodes.</p>
+        <ul>
+          <li>Access elements: <code>getElementById</code>, <code>querySelector</code></li>
+          <li>Modify content: <code>textContent</code>, <code>innerHTML</code></li>
+        </ul>
+        <pre><code>// HTML: <p id="demo">Hello</p>
+const p = document.getElementById("demo");
+p.textContent = "Hello, DOM!";</code></pre>
+      </div>
+      <div class="tab-content hidden" id="lesson1-challenge">
+        <p>Change the text of a paragraph with ID <code>demo</code> to "Hello, DOM!"</p>
+        <textarea id="challenge1-code"></textarea>
+        <button class="run-code" onclick="runChallenge1()">Run Code</button>
+        <pre id="challenge1-output"></pre>
+      </div>
+    </div>
+
+    <!-- Lesson 2 -->
+    <div class="lesson">
+      <h2>Lesson 2: Event Listeners</h2>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="lesson2-theory">Theory</button>
+        <button class="tab-button" data-tab="lesson2-challenge">Challenge</button>
+      </div>
+      <div class="tab-content active" id="lesson2-theory">
+        <p>Event listeners run code in response to user interactions.</p>
+        <pre><code>const btn = document.querySelector("button");
+btn.addEventListener("click", () => {
+  alert("Clicked!");
+});</code></pre>
+        <ul>
+          <li><code>click</code>, <code>keydown</code>, <code>mouseover</code></li>
+        </ul>
+      </div>
+      <div class="tab-content hidden" id="lesson2-challenge">
+        <p>Create a button labeled "Click Me!" that shows an alert when clicked.</p>
+        <textarea id="challenge2-code"></textarea>
+        <button class="run-code" onclick="runChallenge2()">Run Code</button>
+        <pre id="challenge2-output"></pre>
+      </div>
+    </div>
+
+    <!-- Lesson 3 -->
+    <div class="lesson">
+      <h2>Lesson 3: JavaScript Functions</h2>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="lesson3-theory">Theory</button>
+        <button class="tab-button" data-tab="lesson3-challenge">Challenge</button>
+      </div>
+      <div class="tab-content active" id="lesson3-theory">
+        <p>Functions are reusable blocks of code that perform a task.</p>
+        <pre><code>function greet(name) {
+  return "Hello, " + name + "!";
+}
+const msg = greet("Emaan");</code></pre>
+      </div>
+      <div class="tab-content hidden" id="lesson3-challenge">
+        <p>Create a function <code>square</code> that returns the square of a number.</p>
+        <textarea id="challenge3-code"></textarea>
+        <button class="run-code" onclick="runChallenge3()">Run Code</button>
+        <pre id="challenge3-output"></pre>
+      </div>
+    </div>
+
+    <!-- Lesson 4 -->
+    <div class="lesson">
+      <h2>Lesson 4: JavaScript Loops</h2>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="lesson4-theory">Theory</button>
+        <button class="tab-button" data-tab="lesson4-challenge">Challenge</button>
+      </div>
+      <div class="tab-content active" id="lesson4-theory">
+        <p>Loops repeat blocks of code.</p>
+        <pre><code>for (let i = 1; i <= 5; i++) {
+  console.log("Step " + i);
+}</code></pre>
+      </div>
+      <div class="tab-content hidden" id="lesson4-challenge">
+        <p>Use a <code>for</code> loop to log numbers 1 through 5.</p>
+        <textarea id="challenge4-code"></textarea>
+        <button class="run-code" onclick="runChallenge4()">Run Code</button>
+        <pre id="challenge4-output"></pre>
+      </div>
+    </div>
+
+    <!-- Lesson 5 -->
+    <div class="lesson">
+      <h2>Lesson 5: Conditional Statements</h2>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="lesson5-theory">Theory</button>
+        <button class="tab-button" data-tab="lesson5-challenge">Challenge</button>
+      </div>
+      <div class="tab-content active" id="lesson5-theory">
+        <p>Conditionals control program logic.</p>
+        <pre><code>const score = 85;
+if (score >= 90) {
+  console.log("A");
+} else if (score >= 80) {
+  console.log("B");
+} else {
+  console.log("C or lower");
+}</code></pre>
+      </div>
+      <div class="tab-content hidden" id="lesson5-challenge">
+        <p>Check if a number is positive, negative, or zero.</p>
+        <textarea id="challenge5-code"></textarea>
+        <button class="run-code" onclick="runChallenge5()">Run Code</button>
+        <pre id="challenge5-output"></pre>
+      </div>
+    </div>
+
+    <!-- Lesson 6 -->
+    <div class="lesson">
+      <h2>Lesson 6: Arrays</h2>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="lesson6-theory">Theory</button>
+        <button class="tab-button" data-tab="lesson6-challenge">Challenge</button>
+      </div>
+      <div class="tab-content active" id="lesson6-theory">
+        <p>Arrays hold multiple values in one variable.</p>
+        <pre><code>const nums = [1, 2, 3];
+console.log(nums[0]); // 1</code></pre>
+        <p><code>push()</code>, <code>pop()</code>, <code>length</code>, <code>for...of</code></p>
+      </div>
+      <div class="tab-content hidden" id="lesson6-challenge">
+        <p>Make an array of 3 numbers and print their sum.</p>
+        <textarea id="challenge6-code"></textarea>
+        <button class="run-code" onclick="runChallenge6()">Run Code</button>
+        <pre id="challenge6-output"></pre>
       </div>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <p>ScriptLab &copy; 2025 ~ With ❤️ from Emaan</p>
+    <a href="https://github.com/mersy-28" target="_blank">GitHub</a>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,316 +1,266 @@
-/* Global Styles */
+/* Base Reset & Root Variables */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  color: var(--text-color);
-  background-color: var(--background-color);
+:root {
+  --background: #121212;
+  --text: #ffffff;
+  --accent: #6a64f1;
+  --accent-dark: #534bc1;
+  --card-bg: #1e1e2f;
+  --button-text: #ffffff;
+  --border: #333;
+  --output-bg: #1c1c1c;
 }
 
-header {
+body.light-mode {
+  --background: #f9f9f9;
+  --text: #121212;
+  --accent: #007bff;
+  --accent-dark: #0056b3;
+  --card-bg: #ffffff;
+  --button-text: #ffffff;
+  --border: #ccc;
+  --output-bg: #eeeeee;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+  line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: var(--header-background-color);
-  color: var(--header-text-color);
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.menu-btn, .theme-btn {
-  font-size: 20px;
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.menu-btn,
+.theme-btn {
   background: none;
   border: none;
-  cursor: pointer;
+  font-size: 1.5rem;
   color: inherit;
+  cursor: pointer;
 }
 
 .menu {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 250px;
-  background-color: var(--menu-background-color);
-  color: var(--menu-text-color);
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  max-height: 0;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 100;
+  display: none;
 }
 
 .menu.open {
-  max-height: 300px;
+  display: block;
 }
 
 .menu ul {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 0;
 }
 
-.menu ul li {
-  padding: 10px 20px;
-  border-bottom: 1px solid var(--menu-divider-color);
-}
-
-.menu ul li a {
+.menu li a {
   text-decoration: none;
-  color: inherit;
+  color: var(--text);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .menu {
+    display: block !important;
+  }
+
+  .menu ul {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+}
+
+/* Hero & Main Content */
+.hero {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ccc;
 }
 
 .nav-buttons {
   display: flex;
-  gap: 10px;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .nav-buttons button {
-  padding: 10px 15px;
+  background-color: var(--accent);
+  color: var(--button-text);
   border: none;
-  border-radius: 5px;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .nav-buttons button:hover {
-  background-color: var(--button-hover-color);
+  background-color: var(--accent-dark);
 }
 
-main {
-  padding: 20px;
-  text-align: center;
-}
-
-textarea {
-  width: 90%;
-  height: 200px;
-  margin: 20px auto;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid var(--textarea-border-color);
-  border-radius: 5px;
-  background-color: var(--textarea-background-color);
-  color: var(--textarea-text-color);
-}
-
-button {
-  cursor: pointer;
-}
-
-#output {
-  margin: 20px auto;
-  padding: 10px;
-  width: 90%;
-  border: 1px solid var(--textarea-border-color);
-  border-radius: 5px;
-  background-color: var(--output-background-color);
-  color: var(--output-text-color);
-  text-align: left;
-  white-space: pre-wrap;
-}
-
-/* Lessons Section Styling */
+/* Lessons */
 .lesson-container {
   max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: var(--card-background-color);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 2rem auto;
+  padding: 1rem;
 }
 
 .lesson {
-  margin-bottom: 30px;
-  padding: 20px;
-  background-color: var(--lesson-background-color);
+  background-color: var(--card-bg);
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .lesson h2 {
   font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: var(--header-text-color);
+  margin-bottom: 1rem;
 }
 
 .tabs {
   display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .tab-button {
   flex: 1;
-  padding: 10px;
+  padding: 0.75rem;
   border: none;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
+  background-color: var(--accent);
+  color: var(--button-text);
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
-.tab-button.active {
-  background-color: var(--button-hover-color);
-}
-
+.tab-button.active,
 .tab-button:hover {
-  background-color: var(--button-hover-color);
+  background-color: var(--accent-dark);
 }
 
 .tab-content {
   display: none;
-  padding: 20px;
-  background-color: var(--card-background-color);
-  border-radius: 10px;
-  border: 1px solid var(--textarea-border-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: var(--text-color);
-}
-
-.tab-content p {
-  margin-bottom: 15px;
-  line-height: 1.8;
-}
-
-.tab-content ul {
-  list-style: disc;
-  margin: 10px 0 10px 20px;
-}
-
-.tab-content ul li {
-  margin-bottom: 10px;
-}
-
-.tab-content pre {
-  padding: 10px;
-  background-color: var(--textarea-background-color);
-  border: 1px solid var(--textarea-border-color);
-  border-radius: 5px;
-  color: var(--textarea-text-color);
-  white-space: pre-wrap;
-}
-
-.tab-content.hidden {
-  display: none;
+  margin-top: 1rem;
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
 }
 
 .tab-content.active {
-  display: block !important;
+  display: block;
 }
 
-.hidden {
-  display: none;
-}
-
+/* Playground & Output */
 textarea {
   width: 100%;
-  height: 150px;
-  padding: 10px;
-  font-size: 16px;
-  background-color: var(--textarea-background-color);
-  color: var(--textarea-text-color);
-  border: 1px solid var(--textarea-border-color);
-  border-radius: 5px;
-  resize: none;
+  height: 180px;
+  font-size: 1rem;
+  padding: 0.75rem;
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  resize: vertical;
+  margin-top: 1rem;
 }
 
 .run-code {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
+  margin-top: 1rem;
+  background-color: var(--accent);
+  color: var(--button-text);
   border: none;
-  border-radius: 5px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .run-code:hover {
-  background-color: var(--button-hover-color);
+  background-color: var(--accent-dark);
 }
 
+pre#output,
 pre#challenge1-output,
 pre#challenge2-output {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: var(--output-background-color);
-  color: var(--output-text-color);
-  border: 1px solid var(--textarea-border-color);
-  border-radius: 5px;
-  text-align: left;
+  margin-top: 1rem;
+  background-color: var(--output-bg);
+  color: var(--text);
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
   white-space: pre-wrap;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .lesson-container {
-    padding: 15px;
-  }
+/* Footer */
 
-  .lesson {
-    padding: 15px;
-  }
-
-  .tabs {
-    flex-direction: column;
-  }
-
-  .tab-button {
-    flex: none;
-    width: 100%;
-  }
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--card-bg);
+  color: var(--text);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
 }
 
-/* Card and Background Colors */
-:root {
-  --lesson-background-color: #1e1e2f;
-  --card-background-color: #28293d;
+.site-footer a {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-
-/* Themes */
-:root {
-  --background-color: #121212;
-  --text-color: #ffffff;
-  --header-background-color: #1c1c1c;
-  --header-text-color: #ffffff;
-  --menu-background-color: #242424;
-  --menu-text-color: #ffffff;
-  --menu-divider-color: #444444;
-  --button-background-color: #6a64f1;
-  --button-hover-color: #534bc1;
-  --button-text-color: #ffffff;
-  --textarea-background-color: #242424;
-  --textarea-text-color: #ffffff;
-  --textarea-border-color: #444444;
-  --output-background-color: #1e1e1e;
-  --output-text-color: #ffffff;
-}
-
-body.light-mode {
-  --background-color: #f9f9f9;
-  --text-color: #121212;
-  --header-background-color: #ffffff;
-  --header-text-color: #121212;
-  --menu-background-color: #ffffff;
-  --menu-text-color: #121212;
-  --menu-divider-color: #dddddd;
-  --button-background-color: #007bff;
-  --button-hover-color: #0056b3;
-  --button-text-color: #ffffff;
-  --textarea-background-color: #ffffff;
-  --textarea-text-color: #121212;
-  --textarea-border-color: #cccccc;
-  --output-background-color: #f1f1f1;
-  --output-text-color: #121212;
+.site-footer a:hover {
+  color: var(--accent-dark);
 }
