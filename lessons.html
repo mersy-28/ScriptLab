@@ -24,7 +24,7 @@
   <main class="lesson-container">
     <h1>JavaScript Lessons</h1>
 
-    <!-- Lesson 1 -->
+    <!-- Lesson 1: DOM -->
     <div class="lesson">
       <h2>Lesson 1: Introduction to the DOM</h2>
       <div class="tabs">
@@ -32,24 +32,30 @@
         <button class="tab-button" data-tab="lesson1-challenge">Challenge</button>
       </div>
       <div class="tab-content active" id="lesson1-theory">
-        <p>The <strong>DOM</strong> is a programming interface for web documents. It represents the page structure as a tree of nodes.</p>
+        <p>The <strong>Document Object Model (DOM)</strong> represents your HTML as a tree of objects. JavaScript can access and manipulate this structure to create interactive websites.</p>
+        <p><strong>Key Concepts:</strong></p>
         <ul>
-          <li>Access elements: <code>getElementById</code>, <code>querySelector</code></li>
-          <li>Modify content: <code>textContent</code>, <code>innerHTML</code></li>
+          <li><code>document.getElementById()</code> selects an element by its ID.</li>
+          <li><code>textContent</code> or <code>innerHTML</code> modifies the content inside elements.</li>
+          <li>DOM changes reflect immediately on the page without reloading.</li>
         </ul>
-        <pre><code>// HTML: <p id="demo">Hello</p>
-const p = document.getElementById("demo");
-p.textContent = "Hello, DOM!";</code></pre>
+        <pre><code>// Example:
+<p id="greet">Hi!</p>
+
+const el = document.getElementById("greet");
+el.textContent = "Hello, DOM!";</code></pre>
       </div>
       <div class="tab-content hidden" id="lesson1-challenge">
         <p>Change the text of a paragraph with ID <code>demo</code> to "Hello, DOM!"</p>
-        <textarea id="challenge1-code"></textarea>
-        <button class="run-code" onclick="runChallenge1()">Run Code</button>
-        <pre id="challenge1-output"></pre>
+        <div class="codeblock">
+          <textarea id="challenge1-code"></textarea>
+          <button class="run-code" onclick="runChallenge1()">Run Code</button>
+          <pre id="challenge1-output"></pre>
+        </div>
       </div>
     </div>
 
-    <!-- Lesson 2 -->
+    <!-- Lesson 2: Event Listeners -->
     <div class="lesson">
       <h2>Lesson 2: Event Listeners</h2>
       <div class="tabs">
@@ -57,24 +63,27 @@ p.textContent = "Hello, DOM!";</code></pre>
         <button class="tab-button" data-tab="lesson2-challenge">Challenge</button>
       </div>
       <div class="tab-content active" id="lesson2-theory">
-        <p>Event listeners run code in response to user interactions.</p>
-        <pre><code>const btn = document.querySelector("button");
-btn.addEventListener("click", () => {
-  alert("Clicked!");
-});</code></pre>
+        <p><strong>Events</strong> allow your website to react to user actions—clicks, key presses, form submissions, etc.</p>
         <ul>
-          <li><code>click</code>, <code>keydown</code>, <code>mouseover</code></li>
+          <li><code>addEventListener()</code> attaches a function to run when an event occurs.</li>
+          <li>You can use anonymous or named functions as handlers.</li>
+          <li>Common events: <code>click</code>, <code>keydown</code>, <code>submit</code>.</li>
         </ul>
+        <pre><code>document.querySelector("button").addEventListener("click", () => {
+  alert("Button clicked!");
+});</code></pre>
       </div>
       <div class="tab-content hidden" id="lesson2-challenge">
-        <p>Create a button labeled "Click Me!" that shows an alert when clicked.</p>
-        <textarea id="challenge2-code"></textarea>
-        <button class="run-code" onclick="runChallenge2()">Run Code</button>
-        <pre id="challenge2-output"></pre>
+        <p>Create a button labeled "Click Me!" and display an alert when it is clicked.</p>
+        <div class="codeblock">
+          <textarea id="challenge2-code"></textarea>
+          <button class="run-code" onclick="runChallenge2()">Run Code</button>
+          <pre id="challenge2-output"></pre>
+        </div>
       </div>
     </div>
 
-    <!-- Lesson 3 -->
+    <!-- Lesson 3: Functions -->
     <div class="lesson">
       <h2>Lesson 3: JavaScript Functions</h2>
       <div class="tabs">
@@ -82,21 +91,25 @@ btn.addEventListener("click", () => {
         <button class="tab-button" data-tab="lesson3-challenge">Challenge</button>
       </div>
       <div class="tab-content active" id="lesson3-theory">
-        <p>Functions are reusable blocks of code that perform a task.</p>
+        <p><strong>Functions</strong> are blocks of reusable code that perform specific tasks. They help keep your code clean and organized.</p>
         <pre><code>function greet(name) {
-  return "Hello, " + name + "!";
+  return "Hello, " + name;
 }
-const msg = greet("Emaan");</code></pre>
+console.log(greet("Emaan")); // Hello, Emaan</code></pre>
+        <p>You can also use <strong>arrow functions</strong> for shorter syntax:</p>
+        <pre><code>const square = x => x * x;</code></pre>
       </div>
       <div class="tab-content hidden" id="lesson3-challenge">
-        <p>Create a function <code>square</code> that returns the square of a number.</p>
-        <textarea id="challenge3-code"></textarea>
-        <button class="run-code" onclick="runChallenge3()">Run Code</button>
-        <pre id="challenge3-output"></pre>
+        <p>Write a function <code>square</code> that returns the square of a number.</p>
+        <div class="codeblock">
+          <textarea id="challenge3-code"></textarea>
+          <button class="run-code" onclick="runChallenge3()">Run Code</button>
+          <pre id="challenge3-output"></pre>
+        </div>
       </div>
     </div>
 
-    <!-- Lesson 4 -->
+    <!-- Lesson 4: Loops -->
     <div class="lesson">
       <h2>Lesson 4: JavaScript Loops</h2>
       <div class="tabs">
@@ -104,20 +117,28 @@ const msg = greet("Emaan");</code></pre>
         <button class="tab-button" data-tab="lesson4-challenge">Challenge</button>
       </div>
       <div class="tab-content active" id="lesson4-theory">
-        <p>Loops repeat blocks of code.</p>
+        <p><strong>Loops</strong> allow you to repeat a block of code multiple times.</p>
+        <p>Most common types:</p>
+        <ul>
+          <li><code>for</code> – best when the number of iterations is known</li>
+          <li><code>while</code> – repeats as long as condition is true</li>
+          <li><code>for...of</code> – iterate over arrays</li>
+        </ul>
         <pre><code>for (let i = 1; i <= 5; i++) {
   console.log("Step " + i);
 }</code></pre>
       </div>
       <div class="tab-content hidden" id="lesson4-challenge">
-        <p>Use a <code>for</code> loop to log numbers 1 through 5.</p>
-        <textarea id="challenge4-code"></textarea>
-        <button class="run-code" onclick="runChallenge4()">Run Code</button>
-        <pre id="challenge4-output"></pre>
+        <p>Write a <code>for</code> loop to log numbers 1 through 5.</p>
+        <div class="codeblock">
+          <textarea id="challenge4-code"></textarea>
+          <button class="run-code" onclick="runChallenge4()">Run Code</button>
+          <pre id="challenge4-output"></pre>
+        </div>
       </div>
     </div>
 
-    <!-- Lesson 5 -->
+    <!-- Lesson 5: Conditionals -->
     <div class="lesson">
       <h2>Lesson 5: Conditional Statements</h2>
       <div class="tabs">
@@ -125,25 +146,30 @@ const msg = greet("Emaan");</code></pre>
         <button class="tab-button" data-tab="lesson5-challenge">Challenge</button>
       </div>
       <div class="tab-content active" id="lesson5-theory">
-        <p>Conditionals control program logic.</p>
-        <pre><code>const score = 85;
-if (score >= 90) {
-  console.log("A");
-} else if (score >= 80) {
-  console.log("B");
+        <p>Use <strong>if</strong>, <strong>else if</strong>, and <strong>else</strong> to control flow based on conditions.</p>
+        <pre><code>const age = 18;
+if (age >= 18) {
+  console.log("Adult");
 } else {
-  console.log("C or lower");
+  console.log("Minor");
+}</code></pre>
+        <p><strong>switch</strong> is useful for comparing exact values:</p>
+        <pre><code>switch (color) {
+  case "red": console.log("Stop"); break;
+  case "green": console.log("Go"); break;
 }</code></pre>
       </div>
       <div class="tab-content hidden" id="lesson5-challenge">
-        <p>Check if a number is positive, negative, or zero.</p>
-        <textarea id="challenge5-code"></textarea>
-        <button class="run-code" onclick="runChallenge5()">Run Code</button>
-        <pre id="challenge5-output"></pre>
+        <p>Write code that logs whether a number is positive, negative, or zero.</p>
+        <div class="codeblock">
+          <textarea id="challenge5-code"></textarea>
+          <button class="run-code" onclick="runChallenge5()">Run Code</button>
+          <pre id="challenge5-output"></pre>
+        </div>
       </div>
     </div>
 
-    <!-- Lesson 6 -->
+    <!-- Lesson 6: Arrays -->
     <div class="lesson">
       <h2>Lesson 6: Arrays</h2>
       <div class="tabs">
@@ -151,16 +177,77 @@ if (score >= 90) {
         <button class="tab-button" data-tab="lesson6-challenge">Challenge</button>
       </div>
       <div class="tab-content active" id="lesson6-theory">
-        <p>Arrays hold multiple values in one variable.</p>
-        <pre><code>const nums = [1, 2, 3];
-console.log(nums[0]); // 1</code></pre>
-        <p><code>push()</code>, <code>pop()</code>, <code>length</code>, <code>for...of</code></p>
+        <p>Arrays are ordered collections of items. You can add, remove, and loop through them.</p>
+        <pre><code>const fruits = ["apple", "banana", "cherry"];
+console.log(fruits[1]); // banana</code></pre>
+        <p><strong>Useful Methods:</strong></p>
+        <ul>
+          <li><code>push()</code> – add to end</li>
+          <li><code>pop()</code> – remove last</li>
+          <li><code>length</code> – array size</li>
+          <li><code>for...of</code> – iterate over values</li>
+        </ul>
       </div>
       <div class="tab-content hidden" id="lesson6-challenge">
-        <p>Make an array of 3 numbers and print their sum.</p>
-        <textarea id="challenge6-code"></textarea>
-        <button class="run-code" onclick="runChallenge6()">Run Code</button>
-        <pre id="challenge6-output"></pre>
+        <p>Create an array of 3 numbers and print their sum.</p>
+        <div class="codeblock">
+          <textarea id="challenge6-code"></textarea>
+          <button class="run-code" onclick="runChallenge6()">Run Code</button>
+          <pre id="challenge6-output"></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 7: Objects -->
+    <div class="lesson">
+      <h2>Lesson 7: Objects</h2>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="lesson7-theory">Theory</button>
+        <button class="tab-button" data-tab="lesson7-challenge">Challenge</button>
+      </div>
+      <div class="tab-content active" id="lesson7-theory">
+        <p>Objects let you group related data and behaviors into key-value pairs.</p>
+        <pre><code>const person = {
+  name: "Emaan",
+  age: 20,
+  greet() {
+    return "Hello, my name is " + this.name;
+  }
+};</code></pre>
+        <p>Access values using <code>person.name</code> or call methods like <code>person.greet()</code>.</p>
+      </div>
+      <div class="tab-content hidden" id="lesson7-challenge">
+        <p>Create a <code>car</code> object with <code>make</code>, <code>model</code>, and a method <code>getInfo()</code> returning a string.</p>
+        <div class="codeblock">
+          <textarea id="challenge7-code"></textarea>
+          <button class="run-code" onclick="runChallenge7()">Run Code</button>
+          <pre id="challenge7-output"></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 8: Template Literals -->
+    <div class="lesson">
+      <h2>Lesson 8: Template Literals</h2>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="lesson8-theory">Theory</button>
+        <button class="tab-button" data-tab="lesson8-challenge">Challenge</button>
+      </div>
+      <div class="tab-content active" id="lesson8-theory">
+        <p>Template literals use backticks <code>` `</code> and allow variable embedding via <code>${}</code>.</p>
+        <pre><code>const name = "Emaan";
+console.log(`Hi, I'm ${name}`);</code></pre>
+        <p>You can also write multi-line strings:</p>
+        <pre><code>const poem = `Roses are red,
+Violets are blue.`;</code></pre>
+      </div>
+      <div class="tab-content hidden" id="lesson8-challenge">
+        <p>Create a message using template literals: "Hi, my name is [your name] and I love JavaScript!"</p>
+        <div class="codeblock">
+          <textarea id="challenge8-code"></textarea>
+          <button class="run-code" onclick="runChallenge8()">Run Code</button>
+          <pre id="challenge8-output"></pre>
+        </div>
       </div>
     </div>
   </main>
@@ -169,7 +256,7 @@ console.log(nums[0]); // 1</code></pre>
     <p>ScriptLab &copy; 2025 ~ With ❤️ from Emaan</p>
     <a href="https://github.com/mersy-28" target="_blank">GitHub</a>
   </footer>
-
+  <button id="scroll-top-btn" title="Back to top">↑</button>
   <script src="script.js"></script>
 </body>
 </html>

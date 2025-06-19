@@ -136,3 +136,232 @@ function runChallenge6() {
     output.textContent = `Error: ${error.message}`;
   }
 }
+
+// Challenge 7 – Objects
+function runChallenge7() {
+  const code = document.getElementById("challenge7-code").value;
+  const output = document.getElementById("challenge7-output");
+  try {
+    const result = eval(`${code}\ncar.getInfo();`);
+    output.textContent = typeof result === "string" && result.length > 0
+      ? "Success! Output: " + result
+      : "Incorrect. Make sure car.getInfo() returns a string.";
+  } catch (error) {
+    output.textContent = `Error: ${error.message}`;
+  }
+}
+
+// Challenge 8 – Template Literals
+function runChallenge8() {
+  const code = document.getElementById("challenge8-code").value;
+  const output = document.getElementById("challenge8-output");
+  try {
+    let captured = "";
+    const originalLog = console.log;
+    console.log = msg => (captured += msg + "\n");
+    eval(code);
+    console.log = originalLog;
+    if (captured.toLowerCase().includes("my name") && captured.toLowerCase().includes("love javascript")) {
+      output.textContent = "Success!";
+    } else {
+      output.textContent = "Output does not match expected format.";
+    }
+  } catch (error) {
+    output.textContent = `Error: ${error.message}`;
+  }
+}
+
+// Scroll-to-top button
+const scrollTopBtn = document.getElementById("scroll-top-btn");
+if (scrollTopBtn) {
+  window.addEventListener("scroll", () => {
+    scrollTopBtn.style.display = window.scrollY > 200 ? "block" : "none";
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Playground - CodeMirror Setup
+const htmlEditor = CodeMirror.fromTextArea(document.getElementById("html-editor"), {
+  mode: "htmlmixed",
+  theme: "material-darker",
+  lineNumbers: true
+});
+const cssEditor = CodeMirror.fromTextArea(document.getElementById("css-editor"), {
+  mode: "css",
+  theme: "material-darker",
+  lineNumbers: true
+});
+const jsEditor = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
+  mode: "javascript",
+  theme: "material-darker",
+  lineNumbers: true
+});
+
+// Restore code from localStorage
+htmlEditor.setValue(localStorage.getItem("code-html") || "<h1>Hello World</h1>");
+cssEditor.setValue(localStorage.getItem("code-css") || "h1 { color: teal; }");
+jsEditor.setValue(localStorage.getItem("code-js") || "console.log('Hello');");
+
+// Save on change
+[htmlEditor, cssEditor, jsEditor].forEach((editor, i) => {
+  editor.on("change", () => {
+    const key = ["code-html", "code-css", "code-js"][i];
+    localStorage.setItem(key, editor.getValue());
+    updatePreview(); // Live update
+  });
+});
+
+// Editor tab switching
+const editorMap = {
+  html: htmlEditor,
+  css: cssEditor,
+  js: jsEditor,
+};
+
+document.querySelectorAll(".tab-button").forEach(button => {
+  button.addEventListener("click", () => {
+    // Remove active class from all buttons
+    document.querySelectorAll(".tab-button").forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+
+    // Determine selected editor
+    const selected = button.dataset.lang;
+
+    // Show only the selected editor
+    for (const [lang, editor] of Object.entries(editorMap)) {
+      const wrapper = editor.getWrapperElement();
+      wrapper.style.display = lang === selected ? "block" : "none";
+      if (lang === selected) editor.refresh();
+    }
+  });
+});
+
+// Initial state: show only HTML
+htmlEditor.getWrapperElement().style.display = "block";
+cssEditor.getWrapperElement().style.display = "none";
+jsEditor.getWrapperElement().style.display = "none";
+
+// Live preview
+function updatePreview() {
+  const html = htmlEditor.getValue();
+  const css = cssEditor.getValue();
+  const js = jsEditor.getValue();
+  const content = `
+    <html>
+      <head><style>${css}</style></head>
+      <body>${html}<script>${js}<\/script></body>
+    </html>`;
+  document.getElementById("preview").srcdoc = content;
+}
+
+// Initial preview render
+updatePreview();
+
+// Console output override
+const originalLog = console.log;
+console.log = function (...args) {
+  const output = args.map(a => typeof a === 'object' ? JSON.stringify(a) : a).join(' ');
+  const logBox = document.getElementById("console-output");
+  logBox.textContent += output + "\n";
+  originalLog.apply(console, args);
+};
+
+// Reset button
+document.getElementById("reset-btn").addEventListener("click", () => {
+  if (confirm("Clear all code and reset?")) {
+    htmlEditor.setValue("");
+    cssEditor.setValue("");
+    jsEditor.setValue("");
+    localStorage.removeItem("code-html");
+    localStorage.removeItem("code-css");
+    localStorage.removeItem("code-js");
+    updatePreview();
+    document.getElementById("console-output").textContent = "";
+  }
+});
+
+// Download button
+document.getElementById("download-btn").addEventListener("click", () => {
+  const html = htmlEditor.getValue();
+  const css = cssEditor.getValue();
+  const js = jsEditor.getValue();
+
+  const blob = new Blob(
+    [`<!DOCTYPE html><html><head><style>${css}</style></head><body>${html}<script>${js}<\/script></body></html>`],
+    { type: "text/html" }
+  );
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "scriptlab_project.html";
+  link.click();
+});
+
+// Templates
+const templates = {
+  blank: {
+    html: "",
+    css: "",
+    js: ""
+  },
+  starter: {
+    html: "<h1>Hello from ScriptLab</h1>",
+    css: "body { font-family: sans-serif; } h1 { color: #6a64f1; }",
+    js: "console.log('ScriptLab ready!');"
+  },
+  clock: {
+    html: `<h1 id="clock">00:00:00</h1>`,
+    css: `body { text-align: center; font-size: 2rem; }`,
+    js: `setInterval(() => {
+  const now = new Date();
+  document.getElementById("clock").textContent =
+    now.toLocaleTimeString();
+}, 1000);`
+  }
+};
+
+document.getElementById("template-selector").addEventListener("change", e => {
+  const selected = e.target.value;
+  if (templates[selected]) {
+    htmlEditor.setValue(templates[selected].html);
+    cssEditor.setValue(templates[selected].css);
+    jsEditor.setValue(templates[selected].js);
+    updatePreview();
+  }
+});
+
+// Theme-aware iframe background
+function updatePreview() {
+  const html = htmlEditor.getValue();
+  const css = cssEditor.getValue();
+  const js = jsEditor.getValue();
+  const bg = document.body.classList.contains("light-mode") ? "#ffffff" : "#121212";
+  const content = `
+    <html>
+      <head>
+        <style>body { background: ${bg}; color: inherit; }</style>
+        <style>${css}</style>
+      </head>
+      <body>
+        ${html}
+        <script>${js}<\/script>
+      </body>
+    </html>`;
+  document.getElementById("console-output").textContent = "";
+  document.getElementById("preview").srcdoc = content;
+}
+
+// Lessons challenge CodeMirror editors
+["challenge1", "challenge2", "challenge3", "challenge4", "challenge5", "challenge6", "challenge7", "challenge8"].forEach(id => {
+  const el = document.getElementById(`${id}-code`);
+  if (el) {
+    CodeMirror.fromTextArea(el, {
+      mode: "javascript",
+      theme: "material-darker",
+      lineNumbers: true
+    });
+  }
+});
