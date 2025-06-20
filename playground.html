@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ScriptLab - Code Playground</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/theme/material-darker.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/javascript/javascript.min.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">ScriptLab</div>
+    <button id="menu-toggle" class="menu-btn">☰</button>
+    <nav id="menu" class="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="lessons.html">Lessons</a></li>
+        <li><a href="playground.html">Playground</a></li>
+        <li><a href="progress.html">Progress</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" class="theme-btn">🌙</button>
+  </header>
+
+  <main class="playground-grid">
+  <h1>Code Playground</h1>
+
+  <div class="control-bar">
+    <select id="template-selector">
+      <option value="blank">Blank Template</option>
+      <option value="starter">Starter Page</option>
+      <option value="clock">Digital Clock</option>
+    </select>
+    <button id="download-btn">💾 Download</button>
+    <button id="reset-btn">🔁 Reset</button>
+  </div>
+
+  <div class="playground-container">
+    <!-- Editor -->
+    <div class="editor-panel">
+      <div class="editor-tabs">
+        <button class="tab-button active" data-lang="html">HTML</button>
+        <button class="tab-button" data-lang="css">CSS</button>
+        <button class="tab-button" data-lang="js">JavaScript</button>
+      </div>
+      <textarea id="html-editor"></textarea>
+      <textarea id="css-editor" style="display: none;"></textarea>
+      <textarea id="js-editor" style="display: none;"></textarea>
+    </div>
+
+    <!-- Preview -->
+    <div class="preview-panel">
+      <iframe id="preview" sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+  </div>
+
+  <!-- Console Output -->
+  <div class="console-panel">
+    <h3>Console Output</h3>
+    <pre id="console-output">(console.log output will appear here)</pre>
+  </div>
+</main>
+  <footer class="site-footer">
+    <p>ScriptLab &copy; 2025 ~ With ❤️ from Emaan</p>
+    <a href="https://github.com/mersy-28" target="_blank">GitHub</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
