@@ -365,3 +365,96 @@ function updatePreview() {
     });
   }
 });
+
+// Theory Code Example Editor 
+function runTheoryExample(id) {
+  const editor = theoryEditors[id];
+  const output = document.getElementById(`${id}-example-output`);
+  if (!editor || !output) return;
+
+  try {
+    const code = editor.getValue();
+    const container = document.createElement("div");
+    container.innerHTML = `<p id="demo">Original</p>`;
+    document.body.appendChild(container);
+    eval(code);
+    const result = document.getElementById("demo")?.textContent;
+    output.textContent = result ? `Output: ${result}` : "No output";
+    document.body.removeChild(container);
+  } catch (err) {
+    output.textContent = "Error: " + err.message;
+  }
+}
+
+// Initialize Editable CodeMirror editors for theory examples
+const theoryEditors = {};
+for (let i = 1; i <= 8; i++) {
+  const textarea = document.getElementById(`lesson${i}-example`);
+  if (textarea) {
+    theoryEditors[`lesson${i}`] = CodeMirror.fromTextArea(textarea, {
+      mode: "javascript",
+      theme: "material-darker",
+      lineNumbers: true
+    });
+  }
+}
+
+// Quiz Logic
+function checkAnswer(lessonId, isCorrect) {
+  const result = document.getElementById(`${lessonId}-quiz-result`);
+  if (result) {
+    result.textContent = isCorrect ? "✅ Correct!" : "❌ Try again.";
+    localStorage.setItem(`${lessonId}-quiz`, isCorrect ? "correct" : "wrong");
+  }
+}
+
+// Progress Checkbox Logic
+function updateChallengeProgress(lessonId) {
+  const checkbox = document.querySelector(`#lesson${lessonId.replace("lesson", "")}-challenge input[type=checkbox]`);
+  const value = checkbox?.checked ? "complete" : "incomplete";
+  localStorage.setItem(`${lessonId}-challenge`, value);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  // Load progress state
+  for (let i = 1; i <= 8; i++) {
+    const id = `lesson${i}`;
+    const checkbox = document.querySelector(`#${id}-challenge input[type=checkbox]`);
+    if (checkbox) {
+      checkbox.checked = localStorage.getItem(`${id}-challenge`) === "complete";
+    }
+    const quizResult = localStorage.getItem(`${id}-quiz`);
+    if (quizResult && document.getElementById(`${id}-quiz-result`)) {
+      document.getElementById(`${id}-quiz-result`).textContent = quizResult === "correct" ? "✅ Correct!" : "❌ Try again.";
+    }
+  }
+});
+
+// Render Progress
+function renderProgress() {
+  const container = document.getElementById("progress-container");
+  if (!container) return;
+
+  let html = "";
+  for (let i = 1; i <= 8; i++) {
+    const id = `lesson${i}`;
+    const isComplete = localStorage.getItem(`${id}-challenge`) === "complete";
+    const quizPassed = localStorage.getItem(`${id}-quiz`) === "correct";
+    const percent = (isComplete + quizPassed) * 50;
+
+    html += `
+      <div class="lesson-progress">
+        <h3>Lesson ${i}</h3>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${percent}%"></div>
+        </div>
+        <p>${percent}% complete</p>
+      </div>
+    `;
+  }
+  container.innerHTML = html;
+}
+
+if (document.getElementById("progress-container")) {
+  renderProgress();
+}

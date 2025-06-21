@@ -44,6 +44,20 @@
 
 const el = document.getElementById("greet");
 el.textContent = "Hello, DOM!";</code></pre>
+    <h3>Editable Code Example</h3>
+    <div class="codeblock">
+      <textarea id="lesson1-example">// Try editing this code</textarea>
+      <button class="run-code" onclick="runTheoryExample('lesson1')">Run Example</button>
+      <pre id="lesson1-example-output"></pre>
+    </div>
+    <h3>Quick Quiz</h3>
+    <p>What does <code>document.getElementById()</code> do?</p>
+    <ul class="quiz">
+      <li><button onclick="checkAnswer('lesson1', false)">Creates a new element</button></li>
+      <li><button onclick="checkAnswer('lesson1', true)">Selects an element by its ID</button></li>
+      <li><button onclick="checkAnswer('lesson1', false)">Deletes an element</button></li>
+    </ul>
+    <p id="lesson1-quiz-result" class="quiz-result"></p>
       </div>
       <div class="tab-content hidden" id="lesson1-challenge">
         <p>Change the text of a paragraph with ID <code>demo</code> to "Hello, DOM!"</p>
@@ -51,6 +65,10 @@ el.textContent = "Hello, DOM!";</code></pre>
           <textarea id="challenge1-code"></textarea>
           <button class="run-code" onclick="runChallenge1()">Run Code</button>
           <pre id="challenge1-output"></pre>
+          <label class="progress-checkbox">
+    <input type="checkbox" onchange="updateChallengeProgress('lesson1')">
+    Mark this challenge as complete
+  </label>
         </div>
       </div>
     </div>
@@ -72,6 +90,20 @@ el.textContent = "Hello, DOM!";</code></pre>
         <pre><code>document.querySelector("button").addEventListener("click", () => {
   alert("Button clicked!");
 });</code></pre>
+    <h3>Editable Code Example</h3>
+    <div class="codeblock">
+      <textarea id="lesson2-example">// Try editing this code</textarea>
+      <button class="run-code" onclick="runTheoryExample('lesson2')">Run Example</button>
+      <pre id="lesson2-example-output"></pre>
+    </div>
+    <h3>Quick Quiz</h3>
+    <p>Which method attaches an event handler to an element?</p>
+    <ul class="quiz">
+      <li><button onclick="checkAnswer('lesson2', false)">setEvent()</button></li>
+      <li><button onclick="checkAnswer('lesson2', true)">addEventListener()</button></li>
+      <li><button onclick="checkAnswer('lesson2', false)">attachHandler()</button></li>
+    </ul>
+    <p id="lesson2-quiz-result" class="quiz-result"></p>
       </div>
       <div class="tab-content hidden" id="lesson2-challenge">
         <p>Create a button labeled "Click Me!" and display an alert when it is clicked.</p>
@@ -79,6 +111,10 @@ el.textContent = "Hello, DOM!";</code></pre>
           <textarea id="challenge2-code"></textarea>
           <button class="run-code" onclick="runChallenge2()">Run Code</button>
           <pre id="challenge2-output"></pre>
+          <label class="progress-checkbox">
+    <input type="checkbox" onchange="updateChallengeProgress('lesson2')">
+    Mark this challenge as complete
+  </label>
         </div>
       </div>
     </div>
@@ -98,6 +134,20 @@ el.textContent = "Hello, DOM!";</code></pre>
 console.log(greet("Emaan")); // Hello, Emaan</code></pre>
         <p>You can also use <strong>arrow functions</strong> for shorter syntax:</p>
         <pre><code>const square = x => x * x;</code></pre>
+    <h3>Editable Code Example</h3>
+    <div class="codeblock">
+      <textarea id="lesson3-example">// Try editing this code</textarea>
+      <button class="run-code" onclick="runTheoryExample('lesson3')">Run Example</button>
+      <pre id="lesson3-example-output"></pre>
+    </div>
+    <h3>Quick Quiz</h3>
+    <p>What is the correct syntax for an arrow function that returns the square of a number?</p>
+    <ul class="quiz">
+      <li><button onclick="checkAnswer('lesson3', false)">function square(x) { return x * x; }</button></li>
+      <li><button onclick="checkAnswer('lesson3', true)">const square = x => x * x;</button></li>
+      <li><button onclick="checkAnswer('lesson3', false)">const square = (x) => { x * x; }</button></li>
+    </ul>
+    <p id="lesson3-quiz-result" class="quiz-result"></p>
       </div>
       <div class="tab-content hidden" id="lesson3-challenge">
         <p>Write a function <code>square</code> that returns the square of a number.</p>
@@ -105,6 +155,10 @@ console.log(greet("Emaan")); // Hello, Emaan</code></pre>
           <textarea id="challenge3-code"></textarea>
           <button class="run-code" onclick="runChallenge3()">Run Code</button>
           <pre id="challenge3-output"></pre>
+          <label class="progress-checkbox">
+    <input type="checkbox" onchange="updateChallengeProgress('lesson3')">
+    Mark this challenge as complete
+  </label>
         </div>
       </div>
     </div>
@@ -127,6 +181,20 @@ console.log(greet("Emaan")); // Hello, Emaan</code></pre>
         <pre><code>for (let i = 1; i <= 5; i++) {
   console.log("Step " + i);
 }</code></pre>
+    <h3>Editable Code Example</h3>
+    <div class="codeblock">
+      <textarea id="lesson4-example">// Try editing this code</textarea>
+      <button class="run-code" onclick="runTheoryExample('lesson4')">Run Example</button>
+      <pre id="lesson4-example-output"></pre>
+    </div>
+    <h3>Quick Quiz</h3>
+    <p>Which loop is best when you know exactly how many times to repeat?</p>
+    <ul class="quiz">
+      <li><button onclick="checkAnswer('lesson4', true)">for loop</button></li>
+      <li><button onclick="checkAnswer('lesson4', false)">while loop</button></li>
+      <li><button onclick="checkAnswer('lesson4', false)">do...while loop</button></li>
+    </ul>
+    <p id="lesson4-quiz-result" class="quiz-result"></p>
       </div>
       <div class="tab-content hidden" id="lesson4-challenge">
         <p>Write a <code>for</code> loop to log numbers 1 through 5.</p>
@@ -134,6 +202,10 @@ console.log(greet("Emaan")); // Hello, Emaan</code></pre>
           <textarea id="challenge4-code"></textarea>
           <button class="run-code" onclick="runChallenge4()">Run Code</button>
           <pre id="challenge4-output"></pre>
+          <label class="progress-checkbox">
+    <input type="checkbox" onchange="updateChallengeProgress('lesson4')">
+    Mark this challenge as complete
+  </label>
         </div>
       </div>
     </div>
@@ -158,6 +230,20 @@ if (age >= 18) {
   case "red": console.log("Stop"); break;
   case "green": console.log("Go"); break;
 }</code></pre>
+    <h3>Editable Code Example</h3>
+    <div class="codeblock">
+      <textarea id="lesson5-example">// Try editing this code</textarea>
+      <button class="run-code" onclick="runTheoryExample('lesson5')">Run Example</button>
+      <pre id="lesson5-example-output"></pre>
+    </div>
+    <h3>Quick Quiz</h3>
+    <p>Which statement is used to execute code when a condition is true?</p>
+    <ul class="quiz">
+      <li><button onclick="checkAnswer('lesson5', true)">if</button></li>
+      <li><button onclick="checkAnswer('lesson5', false)">switch</button></li>
+      <li><button onclick="checkAnswer('lesson5', false)">for</button></li>
+    </ul>
+    <p id="lesson5-quiz-result" class="quiz-result"></p>
       </div>
       <div class="tab-content hidden" id="lesson5-challenge">
         <p>Write code that logs whether a number is positive, negative, or zero.</p>
@@ -165,6 +251,10 @@ if (age >= 18) {
           <textarea id="challenge5-code"></textarea>
           <button class="run-code" onclick="runChallenge5()">Run Code</button>
           <pre id="challenge5-output"></pre>
+          <label class="progress-checkbox">
+    <input type="checkbox" onchange="updateChallengeProgress('lesson5')">
+    Mark this challenge as complete
+  </label>
         </div>
       </div>
     </div>
@@ -187,6 +277,20 @@ console.log(fruits[1]); // banana</code></pre>
           <li><code>length</code> – array size</li>
           <li><code>for...of</code> – iterate over values</li>
         </ul>
+    <h3>Editable Code Example</h3>
+    <div class="codeblock">
+      <textarea id="lesson6-example">// Try editing this code</textarea>
+      <button class="run-code" onclick="runTheoryExample('lesson6')">Run Example</button>
+      <pre id="lesson6-example-output"></pre>
+    </div>
+    <h3>Quick Quiz</h3>
+    <p>Which method adds an item to the end of an array?</p>
+    <ul class="quiz">
+      <li><button onclick="checkAnswer('lesson6', true)">push()</button></li>
+      <li><button onclick="checkAnswer('lesson6', false)">pop()</button></li>
+      <li><button onclick="checkAnswer('lesson6', false)">shift()</button></li>
+    </ul>
+    <p id="lesson6-quiz-result" class="quiz-result"></p>
       </div>
       <div class="tab-content hidden" id="lesson6-challenge">
         <p>Create an array of 3 numbers and print their sum.</p>
@@ -194,6 +298,10 @@ console.log(fruits[1]); // banana</code></pre>
           <textarea id="challenge6-code"></textarea>
           <button class="run-code" onclick="runChallenge6()">Run Code</button>
           <pre id="challenge6-output"></pre>
+          <label class="progress-checkbox">
+    <input type="checkbox" onchange="updateChallengeProgress('lesson6')">
+    Mark this challenge as complete
+  </label>
         </div>
       </div>
     </div>
@@ -215,6 +323,20 @@ console.log(fruits[1]); // banana</code></pre>
   }
 };</code></pre>
         <p>Access values using <code>person.name</code> or call methods like <code>person.greet()</code>.</p>
+    <h3>Editable Code Example</h3>
+    <div class="codeblock">
+      <textarea id="lesson7-example">// Try editing this code</textarea>
+      <button class="run-code" onclick="runTheoryExample('lesson7')">Run Example</button>
+      <pre id="lesson7-example-output"></pre>
+    </div>
+    <h3>Quick Quiz</h3>
+    <p>How do you access the <code>name</code> property of an object <code>person</code>?</p>
+    <ul class="quiz">
+      <li><button onclick="checkAnswer('lesson7', false)">person[name]</button></li>
+      <li><button onclick="checkAnswer('lesson7', true)">person.name</button></li>
+      <li><button onclick="checkAnswer('lesson7', false)">person->name</button></li>
+    </ul>
+    <p id="lesson7-quiz-result" class="quiz-result"></p>
       </div>
       <div class="tab-content hidden" id="lesson7-challenge">
         <p>Create a <code>car</code> object with <code>make</code>, <code>model</code>, and a method <code>getInfo()</code> returning a string.</p>
@@ -222,6 +344,10 @@ console.log(fruits[1]); // banana</code></pre>
           <textarea id="challenge7-code"></textarea>
           <button class="run-code" onclick="runChallenge7()">Run Code</button>
           <pre id="challenge7-output"></pre>
+          <label class="progress-checkbox">
+    <input type="checkbox" onchange="updateChallengeProgress('lesson7')">
+    Mark this challenge as complete
+  </label>
         </div>
       </div>
     </div>
@@ -240,6 +366,20 @@ console.log(`Hi, I'm ${name}`);</code></pre>
         <p>You can also write multi-line strings:</p>
         <pre><code>const poem = `Roses are red,
 Violets are blue.`;</code></pre>
+    <h3>Editable Code Example</h3>
+    <div class="codeblock">
+      <textarea id="lesson8-example">// Try editing this code</textarea>
+      <button class="run-code" onclick="runTheoryExample('lesson8')">Run Example</button>
+      <pre id="lesson8-example-output"></pre>
+    </div>
+    <h3>Quick Quiz</h3>
+    <p>Which symbol is used to start and end a template literal?</p>
+    <ul class="quiz">
+      <li><button onclick="checkAnswer('lesson8', false)">Single quotes (')</button></li>
+      <li><button onclick="checkAnswer('lesson8', false)">Double quotes (")</button></li>
+      <li><button onclick="checkAnswer('lesson8', true)">Backticks (`)</button></li>
+    </ul>
+    <p id="lesson8-quiz-result" class="quiz-result"></p>
       </div>
       <div class="tab-content hidden" id="lesson8-challenge">
         <p>Create a message using template literals: "Hi, my name is [your name] and I love JavaScript!"</p>
@@ -247,6 +387,10 @@ Violets are blue.`;</code></pre>
           <textarea id="challenge8-code"></textarea>
           <button class="run-code" onclick="runChallenge8()">Run Code</button>
           <pre id="challenge8-output"></pre>
+          <label class="progress-checkbox">
+    <input type="checkbox" onchange="updateChallengeProgress('lesson8')">
+    Mark this challenge as complete
+  </label>
         </div>
       </div>
     </div>
