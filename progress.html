@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ScriptLab - Progress</title>
   <link rel="stylesheet" href="styles.css"/>
+  <!-- CodeMirror Core -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+
+<!-- CodeMirror Modes -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
+
 </head>
 <body>
   <header class="navbar">
@@ -21,15 +30,26 @@
     <button id="theme-toggle" class="theme-btn">🌙</button>
   </header>
 
-  <main class="hero">
+  <main class="progress-page">
     <h1>Your Progress</h1>
-    <p>Progress tracking and achievements coming soon!</p>
+    <div class="progress-page">
+  <div id="progress-container" class="progress-grid"></div>
+</div>
   </main>
+
   <footer class="site-footer">
   <p>ScriptLab &copy; 2025 ~ With ❤️ from Emaan</p>
-  <a href="https://github.com/mersy-28" target="_blank">GitHub</a>
-  <button id="scroll-top-btn" title="Back to top">↑</button>
-</footer>
+    <a href="https://github.com/mersy-28" target="_blank">GitHub</a>
+  </footer>
+
   <script src="script.js"></script>
+  <script>
+  // Ensure progress renders if it didn’t run during load
+  window.addEventListener("load", () => {
+    if (typeof renderProgress === "function") {
+      renderProgress();
+    }
+  });
+</script>
 </body>
 </html>

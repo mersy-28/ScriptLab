@@ -418,3 +418,136 @@ main {
   border-radius: 6px;
   white-space: pre-wrap;
 }
+
+/* Theory Code Editors */
+.codeblock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.codeblock .CodeMirror {
+  height: 200px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.codeblock .run-code {
+  align-self: flex-start;
+  background-color: var(--accent);
+  color: var(--button-text);
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Quizzes */
+.quiz {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiz button {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.quiz button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.quiz-result {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+/* Progress Tracking */
+.progress-checkbox {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Container for entire progress page */
+.progress-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* Lesson progress box */
+.lesson-progress {
+  background-color: var(--card-bg, #1e1e1e);
+  border: 1px solid var(--border, #444);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text, #eee);
+}
+
+/* Progress bar background */
+.progress-bar {
+  width: 100%;
+  height: 18px;
+  background-color: #333;
+  border-radius: 9px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+/* Progress bar fill (animated) */
+.progress-fill {
+  height: 100%;
+  background-color: var(--accent, #6a64f1);
+  width: 0%;
+  transition: width 0.4s ease-in-out;
+}
+
+/* Completion text */
+.lesson-progress p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text, #ccc);
+}
+
+/* Completion Check and Animation */
+.lesson-status {
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.lesson-status.flash-complete {
+  animation: popFlash 0.6s ease;
+}
+
+@keyframes popFlash {
+  0%   { transform: scale(1);   opacity: 0.3; }
+  50%  { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.progress-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.lesson-progress {
+  flex: 1 1 300px;
+  max-width: 350px;
+  box-sizing: border-box;
+}
