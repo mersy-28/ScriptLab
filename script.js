@@ -244,19 +244,6 @@ htmlEditor.getWrapperElement().style.display = "block";
 cssEditor.getWrapperElement().style.display = "none";
 jsEditor.getWrapperElement().style.display = "none";
 
-// Live preview
-function updatePreview() {
-  const html = htmlEditor.getValue();
-  const css = cssEditor.getValue();
-  const js = jsEditor.getValue();
-  const content = `
-    <html>
-      <head><style>${css}</style></head>
-      <body>${html}<script>${js}<\/script></body>
-    </html>`;
-  document.getElementById("preview").srcdoc = content;
-}
-
 // Initial preview render
 updatePreview();
 
@@ -338,7 +325,7 @@ function updatePreview() {
   const html = htmlEditor.getValue();
   const css = cssEditor.getValue();
   const js = jsEditor.getValue();
-  const bg = document.body.classList.contains("light-mode") ? "#ffffff" : "#121212";
+  const bg = "#ffffff";
   const content = `
     <html>
       <head>
@@ -406,6 +393,7 @@ function checkAnswer(lessonId, isCorrect) {
     result.textContent = isCorrect ? "✅ Correct!" : "❌ Try again.";
     localStorage.setItem(`${lessonId}-quiz`, isCorrect ? "correct" : "wrong");
   }
+  updateLessonCompletionStatus(lessonId);
 }
 
 // Progress Checkbox Logic
@@ -413,6 +401,7 @@ function updateChallengeProgress(lessonId) {
   const checkbox = document.querySelector(`#lesson${lessonId.replace("lesson", "")}-challenge input[type=checkbox]`);
   const value = checkbox?.checked ? "complete" : "incomplete";
   localStorage.setItem(`${lessonId}-challenge`, value);
+  updateLessonCompletionStatus(lessonId);
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -427,34 +416,61 @@ window.addEventListener("DOMContentLoaded", () => {
     if (quizResult && document.getElementById(`${id}-quiz-result`)) {
       document.getElementById(`${id}-quiz-result`).textContent = quizResult === "correct" ? "✅ Correct!" : "❌ Try again.";
     }
+    updateLessonCompletionStatus(id);
   }
 });
 
 // Render Progress
 function renderProgress() {
   const container = document.getElementById("progress-container");
-  if (!container) return;
+  if (!container) {
+    console.error("No #progress-container found.");
+    return;
+  }
 
   let html = "";
   for (let i = 1; i <= 8; i++) {
     const id = `lesson${i}`;
-    const isComplete = localStorage.getItem(`${id}-challenge`) === "complete";
-    const quizPassed = localStorage.getItem(`${id}-quiz`) === "correct";
+    const challengeKey = localStorage.getItem(`${id}-challenge`);
+    const quizKey = localStorage.getItem(`${id}-quiz`);
+
+    const isComplete = challengeKey === "complete" ? 1 : 0;
+    const quizPassed = quizKey === "correct" ? 1 : 0;
     const percent = (isComplete + quizPassed) * 50;
 
     html += `
       <div class="lesson-progress">
-        <h3>Lesson ${i}</h3>
+        <h3>${id.charAt(0).toUpperCase() + id.slice(1)}</h3>
         <div class="progress-bar">
-          <div class="progress-fill" style="width: ${percent}%"></div>
+          <div class="progress-fill" style="width: ${percent}%;"></div>
         </div>
         <p>${percent}% complete</p>
       </div>
     `;
   }
+
   container.innerHTML = html;
 }
 
-if (document.getElementById("progress-container")) {
+
+// Ensure renderProgress runs after all logic
+window.addEventListener("DOMContentLoaded", () => {
   renderProgress();
+});
+
+
+function updateLessonCompletionStatus(id) {
+  const challengeDone = localStorage.getItem(`${id}-challenge`) === "complete";
+  const quizCorrect = localStorage.getItem(`${id}-quiz`) === "correct";
+  const status = document.getElementById(`${id}-status`);
+
+  if (status) {
+    if (challengeDone && quizCorrect) {
+      status.textContent = "🎉";
+      status.classList.add("flash-complete");
+      setTimeout(() => status.classList.remove("flash-complete"), 600);
+    } else {
+      status.textContent = "";
+    }
+  }
 }

@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ScriptLab - Lessons</title>
   <link rel="stylesheet" href="styles.css"/>
+  <!-- CodeMirror Core -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+
+<!-- CodeMirror Modes -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
 </head>
 <body>
   <header class="navbar">
@@ -26,7 +34,7 @@
 
     <!-- Lesson 1: DOM -->
     <div class="lesson">
-      <h2>Lesson 1: Introduction to the DOM</h2>
+      <h2>Lesson 1: Introduction to the DOM<span class="lesson-status" id="lesson1-status"></span></h2>
       <div class="tabs">
         <button class="tab-button active" data-tab="lesson1-theory">Theory</button>
         <button class="tab-button" data-tab="lesson1-challenge">Challenge</button>
@@ -75,7 +83,7 @@ el.textContent = "Hello, DOM!";</code></pre>
 
     <!-- Lesson 2: Event Listeners -->
     <div class="lesson">
-      <h2>Lesson 2: Event Listeners</h2>
+      <h2>Lesson 2: Event Listeners<span class="lesson-status" id="lesson2-status"></span></h2>
       <div class="tabs">
         <button class="tab-button active" data-tab="lesson2-theory">Theory</button>
         <button class="tab-button" data-tab="lesson2-challenge">Challenge</button>
@@ -121,7 +129,7 @@ el.textContent = "Hello, DOM!";</code></pre>
 
     <!-- Lesson 3: Functions -->
     <div class="lesson">
-      <h2>Lesson 3: JavaScript Functions</h2>
+      <h2>Lesson 3: JavaScript Functions<span class="lesson-status" id="lesson3-status"></span></h2>
       <div class="tabs">
         <button class="tab-button active" data-tab="lesson3-theory">Theory</button>
         <button class="tab-button" data-tab="lesson3-challenge">Challenge</button>
@@ -165,7 +173,7 @@ console.log(greet("Emaan")); // Hello, Emaan</code></pre>
 
     <!-- Lesson 4: Loops -->
     <div class="lesson">
-      <h2>Lesson 4: JavaScript Loops</h2>
+      <h2>Lesson 4: JavaScript Loops<span class="lesson-status" id="lesson4-status"></span></h2>
       <div class="tabs">
         <button class="tab-button active" data-tab="lesson4-theory">Theory</button>
         <button class="tab-button" data-tab="lesson4-challenge">Challenge</button>
@@ -212,7 +220,7 @@ console.log(greet("Emaan")); // Hello, Emaan</code></pre>
 
     <!-- Lesson 5: Conditionals -->
     <div class="lesson">
-      <h2>Lesson 5: Conditional Statements</h2>
+      <h2>Lesson 5: Conditional Statements<span class="lesson-status" id="lesson5-status"></span></h2>
       <div class="tabs">
         <button class="tab-button active" data-tab="lesson5-theory">Theory</button>
         <button class="tab-button" data-tab="lesson5-challenge">Challenge</button>
@@ -261,7 +269,7 @@ if (age >= 18) {
 
     <!-- Lesson 6: Arrays -->
     <div class="lesson">
-      <h2>Lesson 6: Arrays</h2>
+      <h2>Lesson 6: Arrays<span class="lesson-status" id="lesson6-status"></span></h2>
       <div class="tabs">
         <button class="tab-button active" data-tab="lesson6-theory">Theory</button>
         <button class="tab-button" data-tab="lesson6-challenge">Challenge</button>
@@ -308,7 +316,7 @@ console.log(fruits[1]); // banana</code></pre>
 
     <!-- Lesson 7: Objects -->
     <div class="lesson">
-      <h2>Lesson 7: Objects</h2>
+      <h2>Lesson 7: Objects<span class="lesson-status" id="lesson7-status"></span></h2>
       <div class="tabs">
         <button class="tab-button active" data-tab="lesson7-theory">Theory</button>
         <button class="tab-button" data-tab="lesson7-challenge">Challenge</button>
@@ -354,7 +362,7 @@ console.log(fruits[1]); // banana</code></pre>
 
     <!-- Lesson 8: Template Literals -->
     <div class="lesson">
-      <h2>Lesson 8: Template Literals</h2>
+      <h2>Lesson 8: Template Literals<span class="lesson-status" id="lesson8-status"></span></h2>
       <div class="tabs">
         <button class="tab-button active" data-tab="lesson8-theory">Theory</button>
         <button class="tab-button" data-tab="lesson8-challenge">Challenge</button>
