@@ -126,6 +126,7 @@ body {
 main {
   margin-bottom: 4rem;
   flex: 1;
+  animation: fadeInUp 0.8s ease-out both;
 }
 
 .hero {
@@ -174,6 +175,19 @@ main {
 
 .nav-buttons button:hover {
   background-color: var(--accent-dark);
+}
+
+button,
+.tab-button,
+.btn {
+  transition: all 0.3s ease;
+}
+
+button:hover,
+.tab-button:hover,
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--accent);
 }
 
 /* Lessons */
@@ -278,6 +292,7 @@ main {
   font-size: 1rem;
   border: 1px solid var(--border);
   border-radius: 0 0 6px 6px;
+  animation: fadeIn 0.5s ease-out both;
 }
 
 /* Right preview pane */
@@ -509,9 +524,16 @@ main {
 /* Progress bar fill (animated) */
 .progress-fill {
   height: 100%;
-  background-color: var(--accent, #6a64f1);
+  background: linear-gradient(to right, var(--accent), var(--accent-dark));
   width: 0%;
   transition: width 0.4s ease-in-out;
+  animation: fillBar 1s ease forwards;
+}
+
+@keyframes fillBar {
+  to {
+    width: var(--fill);
+  }
 }
 
 /* Completion text */
@@ -550,4 +572,40 @@ main {
   flex: 1 1 300px;
   max-width: 350px;
   box-sizing: border-box;
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-10px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Tab Animations */
+.tab-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  display: none;
+}
+
+.tab-content.active {
+  opacity: 1;
+  transform: translateY(0);
+  display: block;
 }
