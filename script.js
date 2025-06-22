@@ -24,8 +24,10 @@ document.querySelectorAll(".tab-button").forEach(button => {
     const lesson = button.closest(".lesson");
     const tabs = lesson.querySelectorAll(".tab-button");
     const contents = lesson.querySelectorAll(".tab-content");
+
     tabs.forEach(b => b.classList.remove("active"));
     contents.forEach(c => c.classList.remove("active"));
+
     button.classList.add("active");
     lesson.querySelector(`#${button.dataset.tab}`).classList.add("active");
   });
@@ -442,11 +444,11 @@ function renderProgress() {
       <div class="lesson-progress">
         <h3>${id.charAt(0).toUpperCase() + id.slice(1)}</h3>
         <div class="progress-bar">
-          <div class="progress-fill" style="width: ${percent}%;"></div>
+          <div class="progress-fill" style="--fill: ${percent}%"></div>
         </div>
         <p>${percent}% complete</p>
       </div>
-    `;
+`;
   }
 
   container.innerHTML = html;
